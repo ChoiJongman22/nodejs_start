@@ -21,6 +21,8 @@ Demo.create = (newDemo, result) => {
                 return;
             }
 
+
+            
             console.log('Created Set: ', { id: res.insertId, student_name: newDemo.student_name });
             console.log('Created Complete.');
             result(null, { id: res.insertId, student_name: newDemo.student_name });

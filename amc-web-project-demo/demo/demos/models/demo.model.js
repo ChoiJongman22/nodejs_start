@@ -4,8 +4,6 @@ const Demo=function(demo){
     this.student_name=demo.student_name;
 
 };
-
-
 Demo.create = (newDemo, result) => {
     console.log('NEW DEMO: ', newDemo);
     db.getConnection((err, connection) => {

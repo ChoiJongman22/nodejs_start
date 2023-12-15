@@ -22,7 +22,6 @@ exports.STUDENT_CREATE=(req,res)=>{
         }
         else {
             console.log("Data Table Create Complete");
-            
             res.status(200).send('데이터가 성공적으로 삽입됨');
         }
     });
@@ -49,10 +48,44 @@ exports.HOMEWORK_CREATE=(req,res)=>{
         }
         else {
             console.log("Data Table Create Complete");
-            
             res.status(200).send('데이터가 성공적으로 삽입됨');
         }
     });
+}
+
+
+exports.GET_STUDENTS=(req,res)=>{
+    Demo.GET_STUDENTS(req.params.id,(err,data)=>{
+        console.log("findOne");
+        if(err){
+            if(err.kind==="not found"){
+                req.status(404).send({
+                    message:"Not Found Demo with id ${req.params.id}."
+                });
+            }
+        }
+        else {
+            console.log("Data Table Show Complete");
+            res.status(200).send('데이터가 성공적으로 조회되었음.');
+        }
+    })
+}
+
+exports.GET_HOMEWORKS=(req,res)=>{
+    Demo.GET_HOMEWORKS(req.params.id,(err,data)=>{
+        console.log(req.params.id)
+        if(err){
+            if(err.kind==="not found"){
+                req.status(404).send({
+                    message:"Not Found Demo with id ${req.params.id}."
+                });
+            }
+        }
+        else {
+            console.log("Data Table Show Complete");
+            res.status(200).send('데이터가 성공적으로 조회되었음.');
+        }
+    })
 }
 
 exports.FIND_STUDENT=(req,res)=>{

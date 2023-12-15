@@ -4,7 +4,7 @@ const demo=require("/Users/choejongheon/amc-web-project-demo/demo/demos/controll
 const express=require('express');
 const router=express.Router();
 
-router.post("/product",demo.create);
+router.post("/studentcreate",demo.STUDENT_CREATE);
 router.get("/getid",demo.findOne);
 console.log("Route ok");   
 

@@ -2,10 +2,9 @@ const db=require("/Users/choejongheon/amc-web-project-demo/demo/demos/models/db.
 
 const Demo=function(demo){
     this.student_name=demo.student_name;
-
 };
-Demo.create = (newDemo, result) => {
-    console.log('NEW DEMO: ', newDemo);
+
+Demo.STUDENT_CREATE = (student_data, result) => {
     db.getConnection((err, connection) => {
         if (err) {
             console.log(err);
@@ -13,7 +12,7 @@ Demo.create = (newDemo, result) => {
             return;
         }
 
-        connection.query('INSERT INTO student (student_name) VALUES (?)', [newDemo.student_name], (err, res) => {
+        connection.query('INSERT INTO student SET ?', student_data, (err, res) => {
             connection.release(); // 연결 해제
             if (err) {
                 console.log('error', err);
@@ -21,16 +20,37 @@ Demo.create = (newDemo, result) => {
                 return;
             }
 
-
-            
-            console.log('Created Set: ', { id: res.insertId, student_name: newDemo.student_name });
+            console.log('Created Set: ', { id: res.insertId, student_name: student_data.student_name });
             console.log('Created Complete.');
-            result(null, { id: res.insertId, student_name: newDemo.student_name });
+            result(null, { id: res.insertId, student_name: student_data.student_name });
         });
     });
 };
 
-Demo.findById=(id,result)=>{
+Demo.HOMEWORK_CREATE = (student_data, result) => {
+    db.getConnection((err, connection) => {
+        if (err) {
+            console.log(err);
+            result(err, null);
+            return;
+        }
+
+        connection.query('INSERT INTO homeworks SET ?', student_data, (err, res) => {
+            connection.release(); // 연결 해제
+            if (err) {
+                console.log('error', err);
+                result(err, null);
+                return;
+            }
+
+            console.log('Created Set: ', { id: res.insertId, student_name: student_data.student_name });
+            console.log('Created Complete.');
+            result(null, { id: res.insertId, student_name: student_data.student_name });
+        });
+    });
+};
+
+Demo.FIND_STUDENT_ID=(id,result)=>{
     db.query("SELECT * FROM demos WHERE id = ${id}",(err,res)=>{
         if(err){
             console.log("error",err);

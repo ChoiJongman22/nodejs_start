@@ -1,0 +1,19 @@
+{
+  "name": "amc-project",
+  "version": "1.0.0",
+  "description": "올마이티 수학센터 홈페이지 제작프로젝트입니다.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChoiJongman22/amc-project.git"
+  },
+  "author": "ChoiJongman22",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChoiJongman22/amc-project/issues"
+  },
+  "homepage": "https://github.com/ChoiJongman22/amc-project#readme"
+}
